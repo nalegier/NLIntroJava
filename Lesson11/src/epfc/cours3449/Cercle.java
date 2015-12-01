@@ -2,10 +2,6 @@
 
 package epfc.cours3449;
 
-/**
- *
- * @author 0101nalegier
- */
 public class Cercle {
     static int nrInstance = 0;
     double rayon;
