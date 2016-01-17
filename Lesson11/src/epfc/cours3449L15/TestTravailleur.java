@@ -24,7 +24,5 @@ public class TestTravailleur {
         s.pointer();
         s.demanderConger();
         
-        
-        
     }
 }
