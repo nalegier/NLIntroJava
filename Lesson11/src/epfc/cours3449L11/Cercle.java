@@ -1,6 +1,6 @@
 
 
-package epfc.cours3449;
+package epfc.cours3449L11;
 
 public class Cercle {
     static int nrInstance = 0;

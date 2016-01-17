@@ -3,7 +3,7 @@
  * page 309
  */
 
-package epfc.cours3449;
+package epfc.cours3449L11;
 
 import java.util.Random;
 //import java.util.Scanner;

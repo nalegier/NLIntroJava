@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package epfc.cours3449;
+package epfc.cours3449L11;
 
 public class TestCercle {
     public static void main(String[] args) {
