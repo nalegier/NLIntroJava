@@ -20,10 +20,14 @@ public class TestErreur {
             System.out.println("Somme " + (n + n2));
             encore = false;
         } catch (Exception ex) {
-            System.out.println("Incorrect, il faut 2 entiers");
-            keyb.next();  // to force java to reinitialise la valeur mise dans le keyboard sinon on boucle
-        } 
-    }    
+            System.out.println("Incorrect, il faut 2 entiers" );
+            keyb.nextLine();  // to force java to reinitialise la valeur mise dans le keyboard sinon on boucle
+        } finally {
+            // nettoyage
+            System.out.println("Finally nettoyage");
+        }
+    }
+     
     System.out.println("Vous avez fini");
 }
 }
