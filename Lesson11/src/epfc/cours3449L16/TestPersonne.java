@@ -19,7 +19,7 @@ public class TestPersonne {
                 p.setAge(age);
                 encore = false;
         } catch (IllegalArgumentException ex){
-            System.out.println(ex);
+            System.out.println(ex.getMessage());
             keyb.nextLine();
             
         }
