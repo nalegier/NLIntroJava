@@ -1,5 +1,5 @@
 
-package epfs.cours3449L17;
+package epfc.cours3449L17;
 //to test my cube class
 
 public class TestCube {

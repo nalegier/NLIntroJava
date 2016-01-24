@@ -1,5 +1,5 @@
 
-package epfs.cours3449L17;
+package epfc.cours3449L17;
 // test 2
 
 import java.util.Scanner;
@@ -50,7 +50,7 @@ public class Test2 {
                 c.SetColor(col1, col2, col3);
                 encore = false;
             }
-            catch(IllegalArgumentException ex{
+            catch(IllegalArgumentException ex){
                 System.out.println(ex.getMessage());
                 keyb.nextLine();
                 
