@@ -54,7 +54,7 @@ public class Cube {
         this.color3 = col3;
     }
     public void SetName(String nom){
-        if (nom.length()<4 || nom.length()>15){
+        if (nom.length()<3 || nom.length()>15){
             throw new IllegalArgumentException("Le nom doit comporter entre [3-15] caractères");
         }
         this.nom = nom;
