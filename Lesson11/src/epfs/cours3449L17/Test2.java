@@ -50,7 +50,7 @@ public class Test2 {
                 c.SetColor(col1, col2, col3);
                 encore = false;
             }
-            catch(IllegalArgumentException ex) {
+            catch(IllegalArgumentException ex{
                 System.out.println(ex.getMessage());
                 keyb.nextLine();
                 
