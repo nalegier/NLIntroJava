@@ -5,23 +5,25 @@
  */
 package epfc.cours3449L17Bis;
 
+import java.util.ArrayList;
+
 public class Personne {
     String nom;
-    Adresse adresse;
+    private final ArrayList<Adresse> adresses;
     String numeroNation;
 
-    public Personne(String nom, Adresse adresse, String numeroNation) {
+    public Personne(String nom) {
         this.nom = nom;
-        this.adresse = adresse;
-        this.numeroNation = numeroNation;
+        //creation of a person with a null adresse
+        adresses = new ArrayList<Adresse>();
     }
 
     public void setNom(String nom) {
         this.nom = nom;
     }
-
-    public void setAdresse(Adresse adresse) {
-        this.adresse = adresse;
+    
+    public void addAdresse(Adresse ad1) {
+        adresses.add(ad1);
     }
 
     public void setNumeroNation(String numeroNation) {
@@ -32,10 +34,13 @@ public class Personne {
         return nom;
     }
 
-    public Adresse getAdresse() {
-        return adresse;
+    public Adresse getAdresse(int index) {
+        return adresses.get(index);
     }
-
+    
+    public int getSize(){
+        return adresses.size();
+    }
     public String getNumeroNation() {
         return numeroNation;
     }
