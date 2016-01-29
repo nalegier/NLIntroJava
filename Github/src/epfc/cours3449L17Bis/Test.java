@@ -38,13 +38,12 @@ public class Test {
                     next = false;
                     break;
                 case "Y":
-                    encore = true;
+                    ///encore = true;
                     next = false;
                     break;
                 default:
                     System.out.println("Choix incorrect");
-                    ///stopouencore();
-                }
+            }
         }
         return encore;
     }
