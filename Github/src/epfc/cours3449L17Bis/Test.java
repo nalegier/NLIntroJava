@@ -1,17 +1,33 @@
 
 package epfc.cours3449L17Bis;
 
-/**
- *
- * @author 0101nalegier
- */
-public class Test {
+import java.util.Scanner;
 
+
+public class Test {
+  Scanner keyb = new Scanner(System.in);
+  
     public static void main(String[] args) {
-        Personne p = new Personne("Alfred", new Adresse("Les Maisons 45", "XL"), "9506143607");
-        System.out.println(p.getNom() + " " + p.getAdresse() + " " + p.getNumeroNation());
-        p.getAdresse().setRue("Du Coq");
-        System.out.println(p.getNom() + " " + p.getAdresse() + " " + p.getNumeroNation());
+        boolean encore;
+        encore = true;
+        Adresse ad;
+        System.out.println("Entrez le nom de la personne: ");
+        String nom = keyb.next();
+        Personne p = new Personne(nom);   
+        while(encore){
+            System.out.println("Veuillez entrez la rue: ");
+            String rue = keyb.next();
+            System.out.println("Veuillez entre la ville: ");
+            String ville = keyb.next();
+            new Adresse(rue, ville);
+            
+        }
+        
+        
+        
+    }
+    public void addAdress(){
         
     }
 }
+
