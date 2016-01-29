@@ -23,30 +23,36 @@ public class Test {
     
     public static boolean stopouencore(){
         boolean encore = true;
-        System.out.println("Encore une autre adresse (Y/N): ");
-      /// String nextLine = keyb.nextLine();
-        String choix = keyb.next().toUpperCase();
+        boolean next = true;
+        while (next){
+            System.out.println("Encore une autre adresse (Y/N): ");
+            // Sttering nextLine = keyb.nextLine();
+            String choix = keyb.next();
+            choix = choix.toUpperCase();
+            if (choix.length() == 0){
+                choix = keyb.next();
+            }
             switch(choix){
                 case "N":
                     encore = false;
+                    next = false;
                     break;
                 case "Y":
                     encore = true;
+                    next = false;
                     break;
                 default:
                     System.out.println("Choix incorrect");
-                    keyb.nextLine();
-                    stopouencore();
-                    break;
-            }
-            return encore;
+                    ///stopouencore();
+                }
+        }
+        return encore;
     }
     
      public static Adresse ajoutAdresse(){
          System.out.println("Veuillez entrez la rue: ");
          String rue = keyb.next();
          System.out.println("Veuillez entre la ville: ");
-         //keyb.nextLine();
          String ville = keyb.next();
          return new Adresse(rue, ville);
         
