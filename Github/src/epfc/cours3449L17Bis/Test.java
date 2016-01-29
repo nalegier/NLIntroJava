@@ -24,8 +24,8 @@ public class Test {
     public static boolean stopouencore(){
         boolean encore = true;
         System.out.println("Encore une autre adresse (Y/N): ");
-            keyb.nextLine();
-            String choix = keyb.nextLine().toUpperCase();
+        keyb.nextLine();
+        String choix = keyb.next().toUpperCase();
             switch(choix){
                 case "N":
                     encore = false;
@@ -35,6 +35,7 @@ public class Test {
                     break;
                 default:
                     System.out.println("Choix incorrect");
+                    stopouencore();
             }
             return encore;
     }
