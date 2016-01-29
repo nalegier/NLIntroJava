@@ -51,8 +51,8 @@ public class Test {
      
      public static void imprimerDonner(Personne personne){
          System.out.println("Le nom de la personne est " + personne.getNom());
-         for (int i; i < personne.getSize(); i++){
-             System.out.println("Adresse " + personne.getAdresse(i));
+         for (int i=0; i < personne.getSize(); i++){
+             System.out.println("Adresse " + i + " " + personne.getAdresse(i));
          } 
      }
 }
