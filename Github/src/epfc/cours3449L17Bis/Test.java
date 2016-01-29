@@ -17,13 +17,12 @@ public class Test {
         while(encore){
             personne.addAdresse(ajoutAdresse());
             encore = stopouencore();
-            
         }       
-            
+        imprimerDonner(personne);    
         }
     
     public static boolean stopouencore(){
-        boolean encore;
+        boolean encore = true;
         System.out.println("Encore une autre adresse (Y/N): ");
             keyb.nextLine();
             String choix = keyb.nextLine().toUpperCase();
@@ -49,5 +48,12 @@ public class Test {
          return new Adresse(rue, ville);
         
     }
+     
+     public static void imprimerDonner(Personne personne){
+         System.out.println("Le nom de la personne est " + personne.getNom());
+         for (int i; i < personne.getSize(); i++){
+             System.out.println("Adresse " + personne.getAdresse(i));
+         } 
+     }
 }
 
