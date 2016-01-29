@@ -23,13 +23,21 @@ public class Test {
         }
     
     public static boolean stopouencore(){
+        boolean encore;
         System.out.println("Encore une autre adresse (Y/N): ");
             keyb.nextLine();
-            String choix = keyb.next();
-            if (choix.toUpperCase() == "N"){
-                return false;
+            String choix = keyb.nextLine().toUpperCase();
+            switch(choix){
+                case "N":
+                    encore = false;
+                    break;
+                case "Y":
+                    encore = true;
+                    break;
+                default:
+                    System.out.println("Choix incorrect");
             }
-            else return true;
+            return encore;
     }
     
      public static Adresse ajoutAdresse(){
