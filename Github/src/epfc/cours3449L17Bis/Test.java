@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 
 public class Test {
-  Scanner keyb = new Scanner(System.in);
+  static Scanner keyb = new Scanner(System.in);
   
     public static void main(String[] args) {
         boolean encore;
@@ -13,20 +13,32 @@ public class Test {
         Adresse ad;
         System.out.println("Entrez le nom de la personne: ");
         String nom = keyb.next();
-        Personne p = new Personne(nom);   
+        Personne personne = new Personne(nom);   
         while(encore){
-            System.out.println("Veuillez entrez la rue: ");
-            String rue = keyb.next();
-            System.out.println("Veuillez entre la ville: ");
-            String ville = keyb.next();
-            new Adresse(rue, ville);
+            personne.addAdresse(ajoutAdresse());
+            encore = stopouencore();
+            
+        }       
             
         }
-        
-        
-        
+    
+    public static boolean stopouencore(){
+        System.out.println("Encore une autre adresse (Y/N): ");
+            keyb.nextLine();
+            String choix = keyb.next();
+            if (choix.toUpperCase() == "N"){
+                return false;
+            }
+            else return true;
     }
-    public void addAdress(){
+    
+     public static Adresse ajoutAdresse(){
+         System.out.println("Veuillez entrez la rue: ");
+         String rue = keyb.next();
+         System.out.println("Veuillez entre la ville: ");
+         keyb.nextLine();
+         String ville = keyb.next();
+         return new Adresse(rue, ville);
         
     }
 }
