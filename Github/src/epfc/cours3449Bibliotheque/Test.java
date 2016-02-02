@@ -2,6 +2,8 @@
 
 package epfc.cours3449Bibliotheque;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -10,7 +12,7 @@ public class Test {
     
     static Scanner keyb = new Scanner(System.in);
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         boolean encore = true;
         ArrayList<Livre> livre = new ArrayList<Livre>();
         while (encore){
@@ -20,12 +22,15 @@ public class Test {
         imprimerLivre(livre);
     }
     
-    public static void imprimerLivre(ArrayList<Livre> livre){
+    public static void imprimerLivre(ArrayList<Livre> livre) throws FileNotFoundException{
+        PrintWriter out = new PrintWriter("livres.txt");
         for (int i = 0; i<livre.size(); i++){
             System.out.println("L'identifiant: " + livre.get(i).getIdentifiant());
             System.out.println("La place: " + livre.get(i).getPlace());
-            System.out.println("La date d'achat: " + livre.get(i).getDateachat());
-        }                               
+            System.out.println("La date d'achat: " + livre.get(i).getDateAchat());
+            out.println(livre.get(i));
+        }      
+        out.close();
     }
       public static Livre addlivre(){
          System.out.println("Entrez l'identifiant: ");
@@ -66,3 +71,4 @@ public class Test {
     }    
     }
      
+        
