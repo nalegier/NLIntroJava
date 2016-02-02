@@ -24,6 +24,9 @@ public class Test {
           //  encore = stopouencore();
         //}
         //imprimerLivre(livre);
+        
+        
+        element n'est pas ajouter dans l'objet livre
     }
 
         public static void lirefichier() throws FileNotFoundException{
@@ -44,6 +47,7 @@ public class Test {
                 place = lineScanner.next();
                 dateachat = lineScanner.next();
              }
+             System.out.println(lineScanner);
              return new Livre(identifiant, place, dateachat);
             
         }
