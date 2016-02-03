@@ -5,17 +5,17 @@ package epfc.cours3449Bibliotheque;
 public class Livre {
     private String identifiant;
     private String place;
-    private String dateachat;
+    private String dateAchat;
 
     public Livre(){
         this.identifiant = null;
         this.place = null;
-        this.dateachat = null;
+        this.dateAchat = null;
     }
     
     public Livre(String identifiant,String place, String dateachat) {
         this.place = place;
-        this.dateachat = dateachat;
+        this.dateAchat = dateachat;
         this.identifiant = identifiant;
         
     }
@@ -28,8 +28,8 @@ public class Livre {
         return identifiant;
     }
 
-    public String getDateachat() {
-        return dateachat;
+    public String getDateAchat() {
+        return dateAchat;
     }
 
     public void setIdentifiant(String identifiant) {
@@ -40,16 +40,18 @@ public class Livre {
         this.place = place;
     }
 
-    public void setDateachat(String dateachat) {
-        this.dateachat = dateachat;
+    public void setDateAchat(String dateAchat) {
+        this.dateAchat = dateAchat;
     }
 
     @Override
     public String toString() {
-        return "Livre{" + "identifiant=" + identifiant + ", place=" + place + ", dateachat=" + dateachat + '}';
+        return "Livre{" + "identifiant=" + identifiant + ", place=" + place + ", dateachat=" + dateAchat + '}';
     }
     
-    
+    public String toCSV(Livre livre){
+        return identifiant + ";" + place + ";" + dateAchat;
+    }
     
     
     
