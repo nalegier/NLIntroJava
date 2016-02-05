@@ -6,6 +6,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -41,10 +43,11 @@ public class Test {
         }
         
         public static Livre parseCSVFile(String line){
-            String[] input = line.split(";");
-            String identifiant = input[0];
-            String place = input[1];
-            String dateachat = input[2];            
+            List<String> input = Arrays.asList(line.split(";"));
+            String identifiant = input.get(0);
+            String place = input.get(1);
+            String dateachat = input.get(2);            
+            
             return new Livre(identifiant, place, dateachat);
             
         }
