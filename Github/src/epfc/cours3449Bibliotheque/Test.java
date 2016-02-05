@@ -15,31 +15,20 @@ public class Test {
     static ArrayList<Livre> livre = new ArrayList<Livre>();
        
     public static void main(String[] args) throws FileNotFoundException {
-        //Scanner inputfile = new Scanner(new File("LivresInput.txt"));
         boolean encore = true;
-        //ArrayList<Livre> livre = new ArrayList<Livre>();
         lirefichier();
         imprimerLivre(livre);
-        //while (encore){
-          //  livre.add(addlivre());
-          //  encore = stopouencore();
-        //}
-        //imprimerLivre(livre);
-        
-        
-       /// element n'est pas ajouter dans l'objet livre
     }
-
         public static void lirefichier() throws FileNotFoundException{
             
-        Scanner inputfile = new Scanner(new File("LivresInput.txt"));
         ///Livre livre = null;
-        while (inputfile.hasNext()){
-            String l1 = inputfile.nextLine();
-            livre.add(parseCSVFile(l1));
-                       
+          Scanner inputfile = new Scanner(new File("LivresInput.txt"));
+            ///Livre livre = null;
+            while (inputfile.hasNext()){
+                String l1 = inputfile.nextLine();
+                livre.add(parseCSVFile(l1));
+                
             }
-        inputfile.close();
         }
         
         public static Livre parseCSVFile(String line){
