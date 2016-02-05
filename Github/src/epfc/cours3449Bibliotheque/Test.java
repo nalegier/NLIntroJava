@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class Test {
     
     static Scanner keyb = new Scanner(System.in);
-    static ArrayList<Livre> livre = new ArrayList<Livre>();
+    static ArrayList<Livre> livre = new ArrayList<>();
        
     public static void main(String[] args) throws FileNotFoundException {
        try{
@@ -24,33 +24,28 @@ public class Test {
            System.out.println(ex.getMessage());
        }
     }   
-        public static void lirefichier() throws FileNotFoundException{
-            
-        ///Livre livre = null;
-          File file = new File("LivresInput.txt");  
+        public static ArrayList<Livre> lirefichier() throws FileNotFoundException{
+           
+          File file = new File("Test.txt");  
+          System.out.println(file.getAbsolutePath());
           ///Scanner inputfile = new Scanner(new File("LivresInput.txt"));
           Scanner inputfile = new Scanner(file);
             ///Livre livre = null;
             while (inputfile.hasNext()){
                 String l1 = inputfile.nextLine();
                 livre.add(parseCSVFile(l1));
-                
+               
             }
-            System.out.println(inputfile.getPath());
-             inputfile.close();
+            inputfile.close();
+            return livre;
         }
         
         public static Livre parseCSVFile(String line){
-             Scanner lineScanner = new Scanner(line);
-             lineScanner.useDelimiter(";");
-             String identifiant = null, place = null, dateachat = null;
-             while (lineScanner.hasNext()) {
-                identifiant = lineScanner.next();
-                place = lineScanner.next();
-                dateachat = lineScanner.next();
-             }
-             System.out.println(lineScanner);
-             return new Livre(identifiant, place, dateachat);
+            String[] input = line.split(";");
+            String identifiant = input[0];
+            String place = input[1];
+            String dateachat = input[2];            
+            return new Livre(identifiant, place, dateachat);
             
         }
         
