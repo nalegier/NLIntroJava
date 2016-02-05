@@ -12,11 +12,12 @@ import java.util.Scanner;
 public class Test {
     
     static Scanner keyb = new Scanner(System.in);
+    static ArrayList<Livre> livre = new ArrayList<Livre>();
        
     public static void main(String[] args) throws FileNotFoundException {
         //Scanner inputfile = new Scanner(new File("LivresInput.txt"));
         boolean encore = true;
-        ArrayList<Livre> livre = new ArrayList<Livre>();
+        //ArrayList<Livre> livre = new ArrayList<Livre>();
         lirefichier();
         imprimerLivre(livre);
         //while (encore){
@@ -26,16 +27,19 @@ public class Test {
         //imprimerLivre(livre);
         
         
-        element n'est pas ajouter dans l'objet livre
+       /// element n'est pas ajouter dans l'objet livre
     }
 
         public static void lirefichier() throws FileNotFoundException{
+            
         Scanner inputfile = new Scanner(new File("LivresInput.txt"));
+        ///Livre livre = null;
         while (inputfile.hasNext()){
             String l1 = inputfile.nextLine();
-            parseCSVFile(l1);
-            
+            livre.add(parseCSVFile(l1));
+                       
             }
+        inputfile.close();
         }
         
         public static Livre parseCSVFile(String line){
