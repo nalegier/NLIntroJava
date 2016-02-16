@@ -26,7 +26,7 @@ public class Test_Fichier {
     }   
         public static ArrayList<Livre> lirefichier() throws FileNotFoundException{
            
-          File file = new File("Test.txt");  
+          File file = new File("InputFile.txt");  
           System.out.println(file.getAbsolutePath());
           ///Scanner inputfile = new Scanner(new File("LivresInput.txt"));
           Scanner inputfile = new Scanner(file);
@@ -52,7 +52,7 @@ public class Test_Fichier {
         
     
     public static void imprimerLivre(ArrayList<Livre> livre) throws FileNotFoundException{
-        PrintWriter out = new PrintWriter("livres.txt");
+        PrintWriter out = new PrintWriter("OutputFiles.txt");
         for (int i = 0; i<livre.size(); i++){
             System.out.println("L'identifiant: " + livre.get(i).getIdentifiant());
             System.out.println("La place: " + livre.get(i).getPlace());
@@ -61,8 +61,6 @@ public class Test_Fichier {
         }      
         out.close();
     }
-    
-   
        
     }
      
