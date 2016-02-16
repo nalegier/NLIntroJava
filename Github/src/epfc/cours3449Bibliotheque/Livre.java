@@ -49,12 +49,8 @@ public class Livre {
         return "Livre{" + "identifiant=" + identifiant + ", place=" + place + ", dateachat=" + dateAchat + '}';
     }
     
-    public String toCSV(Livre livre){
+    public String toCSV(){
         return identifiant + ";" + place + ";" + dateAchat;
     }
-    
-    
-    
-    
-    
+
 }
