@@ -25,13 +25,13 @@ public class Test_Fichier {
        }
     }   
         public static ArrayList<Livre> lirefichier() throws FileNotFoundException{
-           
+           //method to read the input file
           File file = new File("InputFile.txt");  
           System.out.println(file.getAbsolutePath());
-          ///Scanner inputfile = new Scanner(new File("LivresInput.txt"));
+          //print the file location
           Scanner inputfile = new Scanner(file);
-            ///Livre livre = null;
             while (inputfile.hasNext()){
+                //loop until there is no more line
                 String l1 = inputfile.nextLine();
                 livre.add(parseCSVFile(l1));
                
@@ -41,6 +41,7 @@ public class Test_Fichier {
         }
         
         public static Livre parseCSVFile(String line){
+            //method to parse the input file into Livre object
             List<String> input = Arrays.asList(line.split(";"));
             String identifiant = input.get(0);
             String place = input.get(1);
@@ -52,6 +53,7 @@ public class Test_Fichier {
         
     
     public static void imprimerLivre(ArrayList<Livre> livre) throws FileNotFoundException{
+        //method to write the output file
         PrintWriter out = new PrintWriter("OutputFiles.txt");
         for (int i = 0; i<livre.size(); i++){
             System.out.println("L'identifiant: " + livre.get(i).getIdentifiant());
