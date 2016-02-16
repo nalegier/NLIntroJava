@@ -20,18 +20,25 @@ import java.util.Scanner;
  */
 public class GestionLivres {
         static ArrayList<Livre> livre = new ArrayList<>();
+        static Scanner keyb = new Scanner(System.in);
        
     public static void main(String[] args) throws FileNotFoundException {
        try{
             lirefichier();
+            affichemenu();
             imprimerLivre(livre);
         }
-       catch(FileNotFoundException ex){
+    catch(FileNotFoundException ex){
            System.out.println(ex.getMessage());
        }
-    }   
-        public static ArrayList<Livre> lirefichier() throws FileNotFoundException{
+       catch(Exception ex){
+               System.out.println(ex.getMessage());
+               }    
+       }
+
+    public static ArrayList<Livre> lirefichier() throws FileNotFoundException{
            //method to read the input file
+       
           File file = new File("livres.txt");  
           System.out.println("Input file location " + file.getAbsolutePath());
           //print the file location
@@ -67,6 +74,45 @@ public class GestionLivres {
         System.out.println("Le fichier est mis à jour");
         out.close();
     }
-       
+    
+    public static void affichemenu(){
+        //method pour afficher un menu
+        System.out.println("Taper C(Create) ou R(read) ou U(update) ou D(delete) : " );
+        String choix = keyb.nextLine();
+        choix = choix.toUpperCase();
+        switch(choix){
+            case "C":
+                
+            case "R":
+                read();
+            case "U":
+            case "D":    
     }
+        
+    }
+       
+    public static void read(){
+        //method pour lire un record specific
+        System.out.println("Entrez le numéro d'identifiant: ");
+        String iden = keyb.nextLine();
+        readrecord(iden);
+    }
+    
+    public static void readrecord(String ident){
+        boolean found = false;
+        for (int i = 0; i<livre.size(); i++){
+            if (livre.get(i).getIdentifiant() == ident){
+                System.out.println("Identifiant : " + livre.get(i).getIdentifiant());
+                System.out.println("Place: " + livre.get(i).getPlace());
+                System.out.println("Date Achat: " + livre.get(i).getDateAchat());
+                found = true;
+            }
+        }   
+        if (found == false){
+            System.out.println("Identifiant inconnu");
+        }
+    }
+        
+    }
+    
 
