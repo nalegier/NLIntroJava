@@ -33,7 +33,7 @@ public class GestionLivres {
         public static ArrayList<Livre> lirefichier() throws FileNotFoundException{
            //method to read the input file
           File file = new File("livres.txt");  
-          System.out.println(file.getAbsolutePath());
+          System.out.println("Input file location " + file.getAbsolutePath());
           //print the file location
           Scanner inputfile = new Scanner(file);
             while (inputfile.hasNext()){
@@ -64,6 +64,7 @@ public class GestionLivres {
         for (int i = 0; i<livre.size(); i++){
             out.println(livre.get(i).toCSV());
         }      
+        System.out.println("Le fichier est mis à jour");
         out.close();
     }
        
