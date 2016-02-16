@@ -94,7 +94,7 @@ public class GestionLivres {
     public static void read(){
         //method pour lire un record specific
         System.out.println("Entrez le numéro d'identifiant: ");
-        String iden = keyb.nextLine();
+        String iden = keyb.next();
         readrecord(iden);
     }
     
