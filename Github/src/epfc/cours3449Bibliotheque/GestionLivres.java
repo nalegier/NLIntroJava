@@ -25,8 +25,8 @@ public class GestionLivres {
     public static void main(String[] args) throws FileNotFoundException {
        try{
             lirefichier();
-            affichemenu();
             imprimerLivre(livre);
+            affichemenu();
         }
     catch(FileNotFoundException ex){
            System.out.println(ex.getMessage());
@@ -69,7 +69,10 @@ public class GestionLivres {
         //method to write the output file
         PrintWriter out = new PrintWriter("livres.txt");
         for (int i = 0; i<livre.size(); i++){
-            out.println(livre.get(i).toCSV());
+            System.out.println(livre.get(i).getIdentifiant());
+            System.out.println(livre.get(i).getPlace());
+            System.out.println(livre.get(i).getDateAchat());
+            ///out.println(livre.get(i).toCSV());
         }      
         System.out.println("Le fichier est mis à jour");
         out.close();
@@ -101,7 +104,7 @@ public class GestionLivres {
     public static void readrecord(String ident){
         boolean found = false;
         for (int i = 0; i<livre.size(); i++){
-            if (livre.get(i).getIdentifiant() == ident){
+            if (livre.get(i).getIdentifiant().equals(ident)){
                 System.out.println("Identifiant : " + livre.get(i).getIdentifiant());
                 System.out.println("Place: " + livre.get(i).getPlace());
                 System.out.println("Date Achat: " + livre.get(i).getDateAchat());
