@@ -53,6 +53,7 @@ public class GestionLivres extends Catalogue {
                 find();
                 break;
             case "C":
+                createLivre();
                 break;
             case "U":
                 break;
@@ -70,8 +71,16 @@ public class GestionLivres extends Catalogue {
         System.out.println("Enter the identifiant number ");
         String iden = keyb.next();
         cat.findIdentifiant(iden);
+        System.out.println(cat);
+        
     }
     
+    public static void createLivre(){
+        try{
+            System.out.println("Enter the data to add a livre");
+            System.out.println("Ent")
+        }
+    }
 
         
     }
