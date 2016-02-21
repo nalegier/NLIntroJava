@@ -9,6 +9,8 @@ package epfc.cours3449Bibliotheque;
 import static epfc.cours3449Bibliotheque.TestManuel.keyb;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -72,6 +74,7 @@ public class GestionLivres {
     }
 
     public static void createLivre() {
+        try {
         System.out.println("Catalogue information");
         System.out.println("Enter the identifiant: ");
          String identifiant = keyb.nextLine();
@@ -79,9 +82,14 @@ public class GestionLivres {
          String place = keyb.nextLine();
          System.out.println("Enter the purchase date: ");
          String dateachat = keyb.nextLine();
-         cat.addLivres(livre(identifiant, place, dateachat));
+         cat.addLivres(new Livre(identifiant,place, dateachat));
+        }
+        catch (BusinessException ex) {
+            Logger.getLogger(GestionLivres.class.getName()).log(Level.SEVERE,null,ex);
+        }
     }
         
+    
     }
     
 
