@@ -6,7 +6,6 @@
 
 package epfc.cours3449Bibliotheque;
 
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,28 +31,32 @@ public class GestionLivres {
      }
     
     public static void affichemenu(){
-        //method pour afficher un menu
-        System.out.println("Select an option: ");
-        System.out.println("F to find a book");
-        System.out.println("C to create a book");
-        System.out.println("U to update a book");
-        System.out.println("D to remove a book");
-        System.out.println("Q to quit the menu");
-        String choix = keyb.nextLine();
-        choix = choix.toUpperCase();
-        switch(choix){
-            case "F":
-                find();
-                break;
-            case "C":
-                //createLivre();
-                break;
-            case "U":
-                break;
-            case "D":
-                break;
-            case "Q":
-                break;
+        boolean next = true;
+        
+        while(next ){
+            //method pour afficher un menu
+            System.out.println("Select an option: ");
+            System.out.println("F to find a book");
+            System.out.println("C to create a book");
+            System.out.println("U to update a book");
+            System.out.println("D to remove a book");
+            System.out.println("Q to quit the menu");
+            String choix = keyb.nextLine();
+            choix = choix.toUpperCase();
+            switch(choix){
+                case "F":
+                    find();
+                    break;
+                case "C":
+                    //createLivre();
+                    break;
+                case "U":
+                    break;
+                case "D":
+                    break;
+                case "Q":
+                    next = false;
+                    break;
                
     }
         
