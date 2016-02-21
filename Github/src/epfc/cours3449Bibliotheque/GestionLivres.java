@@ -69,10 +69,10 @@ public class GestionLivres {
         //method to write the output file
         PrintWriter out = new PrintWriter("livres.txt");
         for (int i = 0; i<livre.size(); i++){
-            System.out.println(livre.get(i).getIdentifiant());
-            System.out.println(livre.get(i).getPlace());
-            System.out.println(livre.get(i).getDateAchat());
-            ///out.println(livre.get(i).toCSV());
+            //System.out.println(livre.get(i).getIdentifiant());
+            //System.out.println(livre.get(i).getPlace());
+            //System.out.println(livre.get(i).getDateAchat());
+            out.println(livre.get(i).toCSV());
         }      
         System.out.println("Le fichier est mis à jour");
         out.close();
@@ -98,23 +98,10 @@ public class GestionLivres {
         //method pour lire un record specific
         System.out.println("Entrez le numéro d'identifiant: ");
         String iden = keyb.next();
-        readrecord(iden);
+        findIdentifiant(iden);
     }
     
-    public static void readrecord(String ident){
-        boolean found = false;
-        for (int i = 0; i<livre.size(); i++){
-            if (livre.get(i).getIdentifiant().equals(ident)){
-                System.out.println("Identifiant : " + livre.get(i).getIdentifiant());
-                System.out.println("Place: " + livre.get(i).getPlace());
-                System.out.println("Date Achat: " + livre.get(i).getDateAchat());
-                found = true;
-            }
-        }   
-        if (found == false){
-            System.out.println("Identifiant inconnu");
-        }
-    }
+
         
     }
     
