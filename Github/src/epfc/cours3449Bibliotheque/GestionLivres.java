@@ -6,19 +6,14 @@
 
 package epfc.cours3449Bibliotheque;
 
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 /**
  *
  * @author 0101nalegier
  */
-public class GestionLivres extends Catalogue {
+public class GestionLivres {
         static Catalogue cat;
         static Scanner keyb = new Scanner(System.in);
        
@@ -33,7 +28,7 @@ public class GestionLivres extends Catalogue {
        }
 
     
-    public static void printWelcome(){
+    public static void printWelcome() throws FileNotFoundException{
         System.out.println("Welcome to the Library application");
         cat = new Catalogue();
      }
@@ -70,19 +65,11 @@ public class GestionLivres extends Catalogue {
         //method pour lire un record specific
         System.out.println("Enter the identifiant number ");
         String iden = keyb.next();
-        System.out.println(cat.findIdentifiant(iden));
+        System.out.println(cat.findIdentifiant(iden).toString());
         ////System.out.println(cat.);
         
     }
-   //* 
-   // public static void createLivre(){
-     //   try{
-       //     System.out.println("Enter the data to add a livre");
-            ///System.out.println("Ent")
-     //   }
-   // }
-//*
-    
+
         
     }
     
