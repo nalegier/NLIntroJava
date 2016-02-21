@@ -6,6 +6,7 @@
 
 package epfc.cours3449Bibliotheque;
 
+import static epfc.cours3449Bibliotheque.TestManuel.keyb;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
@@ -28,7 +29,7 @@ public class GestionLivres {
        }
 
     
-    public static void printWelcome() throws FileNotFoundException{
+    public static void printWelcome() throws BusinessException{
         System.out.println("Welcome to the Library application");
         cat = new Catalogue();
      }
@@ -70,6 +71,16 @@ public class GestionLivres {
         
     }
 
+    public static void createLivre() {
+        System.out.println("Catalogue information");
+        System.out.println("Enter the identifiant: ");
+         String identifiant = keyb.nextLine();
+         System.out.println("Enter the place :");
+         String place = keyb.nextLine();
+         System.out.println("Enter the purchase date: ");
+         String dateachat = keyb.nextLine();
+         cat.addLivres(livre(identifiant, place, dateachat));
+    }
         
     }
     
