@@ -18,87 +18,58 @@ import java.util.Scanner;
  *
  * @author 0101nalegier
  */
-public class GestionLivres {
-        static ArrayList<Livre> livre = new ArrayList<>();
+public class GestionLivres extends Catalogue {
+        static Catalogue cat;
         static Scanner keyb = new Scanner(System.in);
        
     public static void main(String[] args) throws FileNotFoundException {
        try{
-            lirefichier();
-            imprimerLivre(livre);
-            affichemenu();
+           printWelcome();
+           affichemenu();
         }
-    catch(FileNotFoundException ex){
-           System.out.println(ex.getMessage());
-       }
        catch(Exception ex){
                System.out.println(ex.getMessage());
                }    
        }
 
-    public static ArrayList<Livre> lirefichier() throws FileNotFoundException{
-           //method to read the input file
-       
-          File file = new File("livres.txt");  
-          System.out.println("Input file location " + file.getAbsolutePath());
-          //print the file location
-          Scanner inputfile = new Scanner(file);
-            while (inputfile.hasNext()){
-                //loop until there is no more line
-                String l1 = inputfile.nextLine();
-                livre.add(parseCSVFile(l1));
-               
-            }
-            inputfile.close();
-            return livre;
-        }
-        
-        public static Livre parseCSVFile(String line){
-            //method to parse the input file into Livre object
-            List<String> input = Arrays.asList(line.split(";"));
-            String identifiant = input.get(0);
-            String place = input.get(1);
-            String dateachat = input.get(2);            
-            
-            return new Livre(identifiant, place, dateachat);
-            
-        }
-        
     
-    public static void imprimerLivre(ArrayList<Livre> livre) throws FileNotFoundException{
-        //method to write the output file
-        PrintWriter out = new PrintWriter("livres.txt");
-        for (int i = 0; i<livre.size(); i++){
-            //System.out.println(livre.get(i).getIdentifiant());
-            //System.out.println(livre.get(i).getPlace());
-            //System.out.println(livre.get(i).getDateAchat());
-            out.println(livre.get(i).toCSV());
-        }      
-        System.out.println("Le fichier est mis à jour");
-        out.close();
-    }
+    public static void printWelcome(){
+        System.out.println("Welcome to the Library application");
+        cat = new Catalogue();
+     }
     
     public static void affichemenu(){
         //method pour afficher un menu
-        System.out.println("Taper C(Create) ou R(read) ou U(update) ou D(delete) : " );
+        System.out.println("Select an option: ");
+        System.out.println("F to find a book");
+        System.out.println("C to create a book");
+        System.out.println("U to update a book");
+        System.out.println("D to remove a book");
+        System.out.println("Q to quit the menu");
         String choix = keyb.nextLine();
         choix = choix.toUpperCase();
         switch(choix){
+            case "F":
+                find();
+                break;
             case "C":
-                
-            case "R":
-                read();
+                break;
             case "U":
-            case "D":    
+                break;
+            case "D":
+                break;
+            case "Q":
+                break;
+               
     }
         
     }
        
-    public static void read(){
+    public static void find(){
         //method pour lire un record specific
-        System.out.println("Entrez le numéro d'identifiant: ");
+        System.out.println("Enter the identifiant number ");
         String iden = keyb.next();
-        findIdentifiant(iden);
+        cat.findIdentifiant(iden);
     }
     
 
