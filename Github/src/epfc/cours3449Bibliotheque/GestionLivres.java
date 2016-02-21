@@ -59,6 +59,8 @@ public class GestionLivres {
                     break;
                 case "L":
                     listFile();
+                    System.out.println();
+                    break;
                 case "Q":
                     next = false;
                     break;
