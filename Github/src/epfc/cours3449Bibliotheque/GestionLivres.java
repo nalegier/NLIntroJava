@@ -6,7 +6,6 @@
 
 package epfc.cours3449Bibliotheque;
 
-import static epfc.cours3449Bibliotheque.TestManuel.keyb;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -20,14 +19,10 @@ public class GestionLivres {
         static Catalogue cat;
         static Scanner keyb = new Scanner(System.in);
        
-    public static void main(String[] args) throws FileNotFoundException {
-       try{
+    public static void main(String[] args) throws BusinessException {
            printWelcome();
            affichemenu();
-        }
-       catch(Exception ex){
-               System.out.println(ex.getMessage());
-               }    
+        
        }
 
     
