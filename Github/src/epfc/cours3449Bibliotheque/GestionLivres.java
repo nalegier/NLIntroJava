@@ -48,9 +48,10 @@ public class GestionLivres {
                     find();
                     break;
                 case "C":
-                    //createLivre();
+                    createLivre();
                     break;
                 case "U":
+                    updateLivre();
                     break;
                 case "D":
                     break;
@@ -58,8 +59,8 @@ public class GestionLivres {
                     next = false;
                     break;
                
-    }
-        
+            }
+        }
     }
        
     public static void find(){
@@ -86,7 +87,18 @@ public class GestionLivres {
             Logger.getLogger(GestionLivres.class.getName()).log(Level.SEVERE,null,ex);
         }
     }
-        
+    
+    public static void updateLivre() throws BusinessException{
+        System.out.print("Please give the identifiar of the book to update: ");
+        String identifiant = keyb.nextLine();
+        System.out.println("New identifiant ");
+        String newidentifiant = keyb.nextLine();
+        System.out.println("New place ");
+        String newplace = keyb.nextLine();
+        System.out.println("New purchase date ");
+        String newpurchasedate = keyb.nextLine();
+        cat.updateLivres(identifiant, new Livre(newidentifiant, newplace, newpurchasedate));
+    }
     
     }
     
