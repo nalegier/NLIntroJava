@@ -30,7 +30,7 @@ public class GestionLivres {
         cat = new Catalogue();
      }
     
-    public static void affichemenu(){
+    public static void affichemenu() throws BusinessException{
         boolean next = true;
         
         while(next ){
@@ -54,6 +54,7 @@ public class GestionLivres {
                     updateLivre();
                     break;
                 case "D":
+                    deleteLivre();
                     break;
                 case "Q":
                     next = false;
@@ -89,7 +90,7 @@ public class GestionLivres {
     }
     
     public static void updateLivre() throws BusinessException{
-        System.out.print("Please give the identifiar of the book to update: ");
+        System.out.print("Please give the identifiant of the book to update: ");
         String identifiant = keyb.nextLine();
         System.out.println("New identifiant ");
         String newidentifiant = keyb.nextLine();
@@ -100,6 +101,11 @@ public class GestionLivres {
         cat.updateLivres(identifiant, new Livre(newidentifiant, newplace, newpurchasedate));
     }
     
+    public static void deleteLivre() throws BusinessException {
+        System.out.println("Please give the identifiant of the book to delete");
+        String identifiant = keyb.nextLine(); 
+        cat.deleteLivres(identifiant);
+    }
     }
     
 
