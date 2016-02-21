@@ -40,6 +40,7 @@ public class GestionLivres {
             System.out.println("C to create a book");
             System.out.println("U to update a book");
             System.out.println("D to remove a book");
+            System.out.println("L to list the content of the file");
             System.out.println("Q to quit the menu");
             String choix = keyb.nextLine();
             choix = choix.toUpperCase();
@@ -56,6 +57,8 @@ public class GestionLivres {
                 case "D":
                     deleteLivre();
                     break;
+                case "L":
+                    listFile();
                 case "Q":
                     next = false;
                     break;
@@ -105,6 +108,10 @@ public class GestionLivres {
         System.out.println("Please give the identifiant of the book to delete");
         String identifiant = keyb.nextLine(); 
         cat.deleteLivres(identifiant);
+    }
+    
+    public static void listFile() throws BusinessException {
+        cat.listeFile();
     }
     }
     
