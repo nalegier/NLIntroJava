@@ -44,13 +44,17 @@ public class Demopersist {
         Livre l2 = new Livre ("Java ...", "Orstmann");
         ls.add(l1);
         ls.add(l2);
+        sauverLivres();         
+            
+        }
+
+    private static void sauverLivres() throws FileNotFoundException {
         PrintWriter pw = new PrintWriter(new File(nomDeFichier));
         for (Livre l : ls) {   //chaque fois qu'on va dans le for on récupère la valeur de la liste de livre
-                               //ls  
+            //ls  
             pw.println(l.toCsv());
             
         }
         pw.close();         //permet de fermer le fichier sinon rien ne sera sauvé sur le fichier
-            
-        }
+    }
     }
