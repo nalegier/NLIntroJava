@@ -58,7 +58,7 @@ public class Catalogue {
         File file = new File(nomDeFichier);
         Scanner sc = new Scanner(file);
         File fileTemp = new File(fichierTemp);
-        createTemp(fichierTemp);
+        createTemp(fileTemp);
         FileWriter fw = new FileWriter(fileTemp,true);
         while (sc.hasNext()) {
             String line = sc.nextLine();
@@ -83,6 +83,25 @@ public class Catalogue {
         } catch (IOException ex) {
             Logger.getLogger(Catalogue.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public void updateUnLivre(String identifiant) throws FileNotFoundException, IOException{
+        openFile();
+        File file = new File(nomDeFichier);
+        Scanner sc = new Scanner(file);
+        File fileTemp = new File(fichierTemp);
+        createTemp(fileTemp);
+        FileWriter fw = new FileWriter(fileTemp,true);
+        while (sc.hasNext()) {
+            String line = sc.nextLine();
+            String[] elements = line.split(";");
+            if(identifiant.equals(elements[0])){
+                System.out.println("New Title: ");
+                
+                Livre l = new Livre;
+            }
+                
+            }
     }
 } 
           
