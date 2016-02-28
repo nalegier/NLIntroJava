@@ -45,10 +45,9 @@ public class DemoPersistEncaps {
     private static void updateLivre() {
         System.out.println("Please give the identifiant of the book to update: ");
         String identifiant = keyb.nextLine();
+        cat.updateUnLivre(identifiant);
         
     }
-
-}
-
+} 
 
     
