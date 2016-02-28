@@ -16,15 +16,16 @@ public class DemoPersistEncaps {
     public static void main(String[] args) throws FileNotFoundException, IOException, Exception {
         cat = new Catalogue(nomDeFichier);
         lireLeCatalogue();
-        ajout2Livres();
+        //ajoutDeuxLivres();
         delete1Livre();
+        updateLivre();
     }
 
     private static void lireLeCatalogue() throws FileNotFoundException {
         cat.readFile();
         }
     
-    private static void ajout2Livres() throws FileNotFoundException {
+    private static void ajoutDeuxLivres() throws FileNotFoundException {
         Livre l1 = new Livre("Notre Dame","Victor");
         Livre l2 = new Livre("Dôme","Stephen King");
         try {
@@ -35,11 +36,19 @@ public class DemoPersistEncaps {
         }
     }
     
-    private static void delete1Livre() { 
+    private static void delete1Livre() throws FileNotFoundException, IOException { 
         System.out.println("Please give the identifiant of the book to delete");
         String identifiant = keyb.nextLine(); 
         cat.deleteUnLivre(identifiant);
     }
+
+    private static void updateLivre() {
+        System.out.println("Please give the identifiant of the book to update: ");
+        String identifiant = keyb.nextLine();
+        
+    }
+
 }
+
 
     
