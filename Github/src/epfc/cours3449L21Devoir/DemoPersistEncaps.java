@@ -42,16 +42,6 @@ public class DemoPersistEncaps {
             Logger.getLogger(DemoPersistEncaps.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    /*
-    private static void testDeleteNoLivre() {
-        try {
-            Livre l = new Livre("test", "auteur");
-            cat.delete(l.getId());
-        } catch (Exception ex) {
-            System.out.println( ex);
-        }
-    }
-
+}
 
     
