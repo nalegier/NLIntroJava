@@ -2,7 +2,6 @@ package epfc.cours3449L21Devoir;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class DemoPersistEncaps {
 
