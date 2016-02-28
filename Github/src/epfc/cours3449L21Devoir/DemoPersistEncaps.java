@@ -17,7 +17,7 @@ public class DemoPersistEncaps {
         cat = new Catalogue(nomDeFichier);
         lireLeCatalogue();
         //ajoutDeuxLivres();
-        //delete1Livre();
+        delete1Livre();
         updateLivre();
     }
 

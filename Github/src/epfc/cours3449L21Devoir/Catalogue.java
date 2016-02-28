@@ -3,9 +3,11 @@ package epfc.cours3449L21Devoir;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
@@ -76,7 +78,7 @@ public class Catalogue {
             }
         }
         fw.close();
-        fileTemp.renameTo(file);
+        ////copyFileUsingStream(fileTemp, file);
     }
     
     public void createTemp(File fichierTemp){
@@ -119,7 +121,7 @@ public class Catalogue {
             }
         }
         fw.close();
-        copyFileUsingStream(file,fileTemp);
+        copyFileUsingStream(fileTemp,file);
     }
     
     private static void copyFileUsingStream(File source, File dest) throws IOException {
@@ -136,6 +138,7 @@ public class Catalogue {
         } finally {
             is.close();
             os.close();
+           
         }
     }
  } 
