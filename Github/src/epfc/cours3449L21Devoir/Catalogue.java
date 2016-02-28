@@ -104,6 +104,15 @@ public class Catalogue {
                 String autor = keyb.nextLine();
                 Livre l = new Livre(id, title, autor);
             }
+            else{
+                int id = Integer.parseInt(elements[0]);
+                Livre l = new Livre(id, elements[1], elements[2]);
+                fw.write(l.toCsv());
+                fw.write("\n");
+                
+                
+            }
+            
                 
         }
         fw.close();
