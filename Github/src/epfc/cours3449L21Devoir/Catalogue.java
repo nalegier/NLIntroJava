@@ -1,9 +1,14 @@
 package epfc.cours3449L21Devoir;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -103,19 +108,35 @@ public class Catalogue {
                 System.out.println("New Autor: ");
                 String autor = keyb.nextLine();
                 Livre l = new Livre(id, title, autor);
+                fw.write(l.toCsv());
+                fw.write("\n");
             }
             else{
                 int id = Integer.parseInt(elements[0]);
                 Livre l = new Livre(id, elements[1], elements[2]);
                 fw.write(l.toCsv());
                 fw.write("\n");
-                
-                
             }
-            
-                
         }
         fw.close();
+        copyFileUsingStream(file,fileTemp);
     }
-} 
+    
+    private static void copyFileUsingStream(File source, File dest) throws IOException {
+        InputStream is = null;
+        OutputStream os = null;
+        try {
+            is = new FileInputStream(source);
+            os = new FileOutputStream(dest);
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = is.read(buffer)) > 0) {
+                os.write(buffer, 0, length);
+            }
+        } finally {
+            is.close();
+            os.close();
+        }
+    }
+ } 
           
