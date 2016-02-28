@@ -2,6 +2,7 @@ package epfc.cours3449L21Devoir;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -9,25 +10,16 @@ public class DemoPersistEncaps {
 
     static Catalogue cat;
     static final String nomDeFichier = "livre.csv";
-
+    static Scanner keyb = new Scanner(System.in);
+    
+    
     public static void main(String[] args) throws FileNotFoundException, IOException, Exception {
         cat = new Catalogue(nomDeFichier);
         lireLeCatalogue();
         ajout2Livres();
-        ///creeDeuxLivres();
-        ///testDeleteNoLivre();        
-        ///lireLeCatalogue();
-        ///TestReadByAuteur();
+        delete1Livre();
     }
-/*
-    private static void TestReadByAuteur() {
-        System.out.println("\n\n---------------------------------------------------------------");
-        ArrayList<Livre> livresDeVictor = cat.readByAuteur("Victor");
-        for (Livre livre : livresDeVictor) {
-            System.out.println(livre.toString());
-        }
-    }
-*/
+
     private static void lireLeCatalogue() throws FileNotFoundException {
         cat.readFile();
         }
@@ -41,6 +33,12 @@ public class DemoPersistEncaps {
         } catch (IOException ex) {
             Logger.getLogger(DemoPersistEncaps.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    private static void delete1Livre() { 
+        System.out.println("Please give the identifiant of the book to delete");
+        String identifiant = keyb.nextLine(); 
+        cat.deleteUnLivre(identifiant);
     }
 }
 
