@@ -49,6 +49,7 @@ public class Catalogue {
         File file = new File(nomDeFichier);
         FileWriter fw = new FileWriter(file,true);
         fw.write(l.toCsv());
+        fw.close();
         
     
     }
