@@ -58,6 +58,7 @@ public class Catalogue {
         File file = new File(nomDeFichier);
         Scanner sc = new Scanner(file);
         File fileTemp = new File(fichierTemp);
+        createTemp(fichierTemp);
         FileWriter fw = new FileWriter(fileTemp,true);
         while (sc.hasNext()) {
             String line = sc.nextLine();
@@ -66,10 +67,22 @@ public class Catalogue {
                 //int id = Integer.parseInt(elements[0]);
                 Livre l = new Livre(elements[1], elements[2]);
                 fw.write(l.toCsv());
-                fw.write("\n)");
+                fw.write("\n");
             }
         }
         fw.close();
+        fileTemp.renameTo(file);
     }
-            
+    
+    public void createTemp(File fichierTemp){
+          if (fichierTemp.exists()) {
+                fichierTemp.delete();
+            }
+        try {  
+            fichierTemp.createNewFile();
+        } catch (IOException ex) {
+            Logger.getLogger(Catalogue.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
+} 
+          
