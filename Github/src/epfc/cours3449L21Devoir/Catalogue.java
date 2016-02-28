@@ -2,8 +2,8 @@ package epfc.cours3449L21Devoir;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -43,7 +43,15 @@ public class Catalogue {
             System.out.println(l.toString());
         }
     }    
- 
+    
+    public void ajoutLigne(Livre l) throws FileNotFoundException, IOException {
+        openFile();
+        File file = new File(nomDeFichier);
+        FileWriter fw = new FileWriter(file,true);
+        fw.write(l.toCsv());
+        
     
     }
+}
 
+    
