@@ -17,7 +17,7 @@ public class DemoPersistEncaps {
         cat = new Catalogue(nomDeFichier);
         lireLeCatalogue();
         //ajoutDeuxLivres();
-        delete1Livre();
+        //delete1Livre();
         updateLivre();
     }
 
@@ -42,7 +42,7 @@ public class DemoPersistEncaps {
         cat.deleteUnLivre(identifiant);
     }
 
-    private static void updateLivre() {
+    private static void updateLivre() throws IOException {
         System.out.println("Please give the identifiant of the book to update: ");
         String identifiant = keyb.nextLine();
         cat.updateUnLivre(identifiant);
