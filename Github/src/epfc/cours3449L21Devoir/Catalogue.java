@@ -36,10 +36,7 @@ public class Catalogue {
         while (sc.hasNext()) {
             String line = sc.nextLine();
             String[] elements = line.split(";");
-            ///System.out.println(elements[0] + " " + elements[1] + " " + elements[2]);
-            //String id = elements[0];
             int id = Integer.parseInt(elements[0]);
-            //System.out.println(id);
             Livre l = new Livre( id, elements[1], elements[2]);
             System.out.println(l.toString());
         }
@@ -65,15 +62,14 @@ public class Catalogue {
         while (sc.hasNext()) {
             String line = sc.nextLine();
             String[] elements = line.split(";");
-            if(elements[0] != identifiant){
-                fw.write(line);
-                fw.write("\n");
+            if(!identifiant.equals(elements[0])){
+                //int id = Integer.parseInt(elements[0]);
+                Livre l = new Livre(elements[1], elements[2]);
+                fw.write(l.toCsv());
+                fw.write("\n)");
             }
         }
         fw.close();
     }
             
     }
-}
-
-    
