@@ -89,6 +89,7 @@ public class Catalogue {
         openFile();
         File file = new File(nomDeFichier);
         Scanner sc = new Scanner(file);
+        Scanner keyb = new Scanner(System.in);
         File fileTemp = new File(fichierTemp);
         createTemp(fileTemp);
         FileWriter fw = new FileWriter(fileTemp,true);
@@ -96,12 +97,16 @@ public class Catalogue {
             String line = sc.nextLine();
             String[] elements = line.split(";");
             if(identifiant.equals(elements[0])){
+                int id = Integer.parseInt(elements[0]);
                 System.out.println("New Title: ");
-                
-                Livre l = new Livre;
+                String title = keyb.nextLine();
+                System.out.println("New Autor: ");
+                String autor = keyb.nextLine();
+                Livre l = new Livre(id, title, autor);
             }
                 
-            }
+        }
+        fw.close();
     }
 } 
           
