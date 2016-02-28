@@ -10,7 +10,8 @@ import java.util.logging.Logger;
 
 public class Catalogue {
 
-    private String nomDeFichier;
+    private final String nomDeFichier;
+    private final String fichierTemp = "Temp.csv";
 
     public Catalogue(String nomDeFichier) throws FileNotFoundException, IOException {
         this.nomDeFichier = nomDeFichier;
@@ -47,11 +48,31 @@ public class Catalogue {
     public void ajoutLigne(Livre l) throws FileNotFoundException, IOException {
         openFile();
         File file = new File(nomDeFichier);
-        FileWriter fw = new FileWriter(file,true);
-        fw.write(l.toCsv());
-        fw.close();
-        
+        try (FileWriter fw = new FileWriter(file,true)) {
+            fw.write("\n");
+            fw.write(l.toCsv());
+            fw.close();
+        }
+           
+    }
     
+    public void deleteUnLivre(String identifiant) throws FileNotFoundException, IOException {
+        openFile();
+        File file = new File(nomDeFichier);
+        Scanner sc = new Scanner(file);
+        File fileTemp = new File(fichierTemp);
+        FileWriter fw = new FileWriter(fileTemp,true);
+        while (sc.hasNext()) {
+            String line = sc.nextLine();
+            String[] elements = line.split(";");
+            if(elements[0] != identifiant){
+                fw.write(line);
+                fw.write("\n");
+            }
+        }
+        fw.close();
+    }
+            
     }
 }
 
