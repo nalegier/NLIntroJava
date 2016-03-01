@@ -20,10 +20,11 @@ public class Catalogue {
     }
 
     public void add(Livre l) {
-        // 
+        // insert with value for title and author
     }
 
     public void update(Livre l) throws Exception {
+        //update based on ID
         for (Livre livre : ls) {
             if (livre.getId() == l.getId()) {
                 livre.setTitre(l.getTitre());
@@ -35,6 +36,7 @@ public class Catalogue {
     }
 
     public void delete(int id) throws Exception {
+        //delete based on id
         for (Livre livre : ls) {
             if (livre.getId() == id) {
                 ls.remove(livre);
@@ -92,34 +94,6 @@ public class Catalogue {
         return lsDeAuteur;
     }
 
-    private void charge() throws FileNotFoundException, IOException {
-        File file = new File(nomDeFichier);
-        if (!file.exists()) {
-            file.createNewFile();
-        }
-        Scanner sc = new Scanner(file);
-        while (sc.hasNext()) {
-            String line = sc.nextLine();
-            String[] elements = line.split(";");
-            int id = Integer.getInteger(elements[0]);
-            Livre l = new Livre( id, elements[1], elements[2]);
-            ls.add(l);
-        }
-    }
 
-    private void sauve() {
-        PrintWriter pw = null;
-        try {
-            File f = new File(nomDeFichier);
-            pw = new PrintWriter(f);
-            for (Livre l : ls) {
-                pw.println(l.toCsv());
-            }
-            pw.close();
-        } catch (FileNotFoundException ex) {
-            System.out.println("Exception " + ex);
-        } finally {
-            pw.close();
-        }
     }
 }
