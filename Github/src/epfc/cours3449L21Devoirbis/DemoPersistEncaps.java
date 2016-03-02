@@ -12,7 +12,8 @@ public class DemoPersistEncaps {
     public static void main(String[] args) throws FileNotFoundException, IOException, Exception {
         cat = new Catalogue(nomDeFichier);
         lireLeCatalogue();
-        //creeDeuxLivres();
+        creeDeuxLivres();
+        lireLeCatalogue();
         //testDeleteNoLivre();        
        
         ///TestReadByAuteur();
