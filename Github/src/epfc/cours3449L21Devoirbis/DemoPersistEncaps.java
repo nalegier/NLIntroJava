@@ -17,6 +17,8 @@ public class DemoPersistEncaps {
         //creeDeuxLivres();
         updateLivre();
         lireLeCatalogue();
+        delete1Livre();
+        lireLeCatalogue();
         //testDeleteNoLivre();        
        
         ///TestReadByAuteur();
