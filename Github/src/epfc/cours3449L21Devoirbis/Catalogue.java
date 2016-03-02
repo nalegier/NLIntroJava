@@ -31,10 +31,10 @@ public class Catalogue {
         sauve(ls);
     }
 
-    public void update(Livre l) throws Exception {
+    public void update(int id, Livre l) throws Exception {
         ArrayList<Livre> ls = charge();
         for (Livre livre : ls) {
-            if (livre.getId() == l.getId()) {
+            if (livre.getId() == id ){                  
                 livre.setTitre(l.getTitre());
                 livre.setAuteur(l.getAuteur());
                 sauve(ls);
