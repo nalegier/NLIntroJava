@@ -14,7 +14,7 @@ public class DemoPersistEncaps {
     public static void main(String[] args) throws FileNotFoundException, IOException, Exception {
         cat = new Catalogue(nomDeFichier);
         lireLeCatalogue();
-        //creeDeuxLivres();
+        add1Livre();
         updateLivre();
         lireLeCatalogue();
         delete1Livre();
@@ -49,11 +49,13 @@ public class DemoPersistEncaps {
     }
     */
     
-    private static void creeDeuxLivres() throws FileNotFoundException, IOException {
-        Livre l1 = new Livre("Notre Dame", "Victor");
+    private static void add1Livre() throws FileNotFoundException, IOException {
+        System.out.println("Enter a title: ");
+        String title = keyb.nextLine();
+        System.out.println("Enter an autor: ");
+        String autor = keyb.nextLine();
+        Livre l1 = new Livre(title, autor);
         cat.add(l1);
-        Livre l2 = new Livre("Java ...", "Orstmann");
-        cat.add(l2);
     }
     
     
