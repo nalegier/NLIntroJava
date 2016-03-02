@@ -28,7 +28,7 @@ public class Catalogue {
                 new String(l.getTitre()),
                 new String(l.getAuteur())
         ));*/
-        sauve();
+        sauve(ls);
     }
 
     public void update(Livre l) throws Exception {
@@ -37,7 +37,7 @@ public class Catalogue {
             if (livre.getId() == l.getId()) {
                 livre.setTitre(l.getTitre());
                 livre.setAuteur(l.getAuteur());
-                sauve();
+                sauve(ls);
                 return;
             }
         }
@@ -49,7 +49,7 @@ public class Catalogue {
         for (Livre livre : ls) {
             if (livre.getId() == id) {
                 ls.remove(livre);
-                sauve();
+                sauve(ls);
                 return;
             }
         }
@@ -86,21 +86,22 @@ public class Catalogue {
         ArrayList<Livre> ls = new ArrayList<>();
         File file = new File(nomDeFichier);
         if (!file.exists()) {
-            file.createNewFile();
+            //file.createNewFile();
+            System.out.println("Attention erreur fichier non trouvé");
         }
         Scanner sc = new Scanner(file);
         while (sc.hasNext()) {
             String line = sc.nextLine();
             String[] elements = line.split(";");
-            int id = Integer.getInteger(elements[0]);
+            int id = Integer.parseInt(elements[0]);
             Livre l = new Livre( id, elements[1], elements[2]);
             ls.add(l);
         }
         return ls;
     }
 
-    private void sauve() {
-        ArrayList<Livre> ls = new ArrayList();
+    private void sauve(ArrayList<Livre> ls) {
+        //ArrayList<Livre> ls = new ArrayList();
         PrintWriter pw = null;
         try {
             File f = new File(nomDeFichier);
