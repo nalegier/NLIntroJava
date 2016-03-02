@@ -63,11 +63,11 @@ public class DemoPersistEncaps {
 
     private static void updateLivre() throws IOException, Exception {
         System.out.println("Please give the identifiant of the book to update: ");
-        int identifiant = keyb.nextInt();
+        int identifiant = Integer.parseInt(keyb.nextLine());
         System.out.println("New Title: ");
-        String newtitre = keyb.next();
+        String newtitre = keyb.nextLine();
         System.out.println("New Autor: ");                
-        String newauteur = keyb.next();
+        String newauteur = keyb.nextLine();
         cat.update(identifiant, new Livre(identifiant, newtitre, newauteur));
         
                 
