@@ -7,25 +7,26 @@ import java.util.ArrayList;
 public class DemoPersistEncaps {
 
     static Catalogue cat;
-    static final String nomDeFichier = "livre.csv";
+    static final String nomDeFichier = "livre.txt";
 
     public static void main(String[] args) throws FileNotFoundException, IOException, Exception {
         cat = new Catalogue(nomDeFichier);
-        creeDeuxLivres();
-        testDeleteNoLivre();        
         lireLeCatalogue();
-        TestReadByAuteur();
+        //creeDeuxLivres();
+        //testDeleteNoLivre();        
+       
+        ///TestReadByAuteur();
     }
 
-    private static void TestReadByAuteur() {
+    /*private static void TestReadByAuteur() {
         System.out.println("\n\n---------------------------------------------------------------");
         ArrayList<Livre> livresDeVictor = cat.readByAuteur("Victor");
         for (Livre livre : livresDeVictor) {
             System.out.println(livre.toString());
         }
     }
-
-    private static void lireLeCatalogue() {
+*/
+    private static void lireLeCatalogue() throws IOException {
         ArrayList<Livre> sendCat = cat.read();
         for (Livre livre : sendCat) {
             System.out.println(livre.toString());
@@ -41,7 +42,7 @@ public class DemoPersistEncaps {
         }
     }
 
-    private static void creeDeuxLivres() throws FileNotFoundException {
+    private static void creeDeuxLivres() throws FileNotFoundException, IOException {
         Livre l1 = new Livre("Notre Dame", "Victor");
         cat.add(l1);
         Livre l2 = new Livre("Java ...", "Orstmann");
