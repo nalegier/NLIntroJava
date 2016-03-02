@@ -14,14 +14,14 @@ public class Catalogue {
 
     public Catalogue(String nomDeFichier) throws FileNotFoundException, IOException {
         this.nomDeFichier = nomDeFichier;
-//ne pas charger à la création        charge();
+     //ne pas charger à la création        charge();
     }
 
     public void add(Livre l) throws IOException {
         ArrayList<Livre> ls = charge();
         // crée un clone profond (qui élimine toute référence à "l")
-//pas nécessaire String sont immuables        String titre = new String(l.getTitre());
-//pas nécessaire String sont immuables        String auteur = new String(l.getAuteur());
+        //pas nécessaire String sont immuables        String titre = new String(l.getTitre());
+        //pas nécessaire String sont immuables        String auteur = new String(l.getAuteur());
         Livre copy = new Livre(l.getTitre(), l.getAuteur());
         ls.add(copy);
         /*ls.add(new Livre(
@@ -32,10 +32,12 @@ public class Catalogue {
     }
 
     public void update(Livre l) throws Exception {
+        ArrayList<Livre> ls = charge();
         for (Livre livre : ls) {
             if (livre.getId() == l.getId()) {
                 livre.setTitre(l.getTitre());
                 livre.setAuteur(l.getAuteur());
+                sauve();
                 return;
             }
         }
@@ -43,6 +45,7 @@ public class Catalogue {
     }
 
     public void delete(int id) throws Exception {
+        ArrayList<Livre> ls = charge();
         for (Livre livre : ls) {
             if (livre.getId() == id) {
                 ls.remove(livre);
@@ -54,6 +57,7 @@ public class Catalogue {
     }
 
     Livre read(int id) throws Exception {
+        ArrayList<Livre> ls = charge();
         for (Livre livre : ls) {
             if (livre.getId() == id) {
                 return livre;
@@ -62,12 +66,14 @@ public class Catalogue {
         throw new Exception("Livre pas trouvé");
     }
 
-    ArrayList<Livre> read() {
+    ArrayList<Livre> read() throws IOException {
+        ArrayList<Livre> ls = charge();
         return ls;
     }
 
-    ArrayList<Livre> readByAuteur(String auteur) {
+    ArrayList<Livre> readByAuteur(String auteur) throws IOException {
         ArrayList<Livre> lsDeAuteur = new ArrayList<>();
+        ArrayList<Livre> ls = charge();
         for (Livre livre : ls) {
             if (livre.getAuteur().equals(auteur)) {
                 lsDeAuteur.add(livre);
@@ -94,6 +100,7 @@ public class Catalogue {
     }
 
     private void sauve() {
+        ArrayList<Livre> ls = new ArrayList();
         PrintWriter pw = null;
         try {
             File f = new File(nomDeFichier);
