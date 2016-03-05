@@ -13,31 +13,17 @@ public class DemoPersistEncaps {
 
     public static void main(String[] args) throws FileNotFoundException, IOException, Exception {
         cat = new Catalogue(nomDeFichier);
-        lireLeCatalogue();
-        add1Livre();
-        updateLivre();
-        lireLeCatalogue();
-        delete1Livre();
-        lireLeCatalogue();
-        //testDeleteNoLivre();        
-       
-        ///TestReadByAuteur();
+        menu();
+        
     }
 
-    /*private static void TestReadByAuteur() {
-        System.out.println("\n\n---------------------------------------------------------------");
-        ArrayList<Livre> livresDeVictor = cat.readByAuteur("Victor");
-        for (Livre livre : livresDeVictor) {
-            System.out.println(livre.toString());
-        }
-    }
-*/
-    private static void menu() {
+    private static void menu() throws IOException, Exception {
         boolean next = true;
         while(next){
         System.out.println("If you want to add a book, enter A");
         System.out.println("If you want to delete a book, enter D");
         System.out.println("If you want to find a book, enter F");
+        System.out.println("If you want to update a book, enter U");
         System.out.println("If you want to list the catalogue, enter R");
         System.out.println("To stop, press E");
         String choix = keyb.nextLine();
@@ -55,6 +41,9 @@ public class DemoPersistEncaps {
                 case "F":
                     find1Livre();
                     break;     
+                case "U":
+                    update1Livre();
+                    break;
                 case "R":
                     lireLeCatalogue();
                     break;
@@ -73,16 +62,6 @@ public class DemoPersistEncaps {
             System.out.println(livre.toString());
         }
     }
-
-    /*private static void testDeleteNoLivre() {
-        try {
-            Livre l = new Livre("test", "auteur");
-            cat.delete(l.getId());
-        } catch (Exception ex) {
-            System.out.println( ex);
-        }
-    }
-    */
     
     private static void add1Livre() throws FileNotFoundException, IOException {
         System.out.println("Enter a title: ");
@@ -93,8 +72,7 @@ public class DemoPersistEncaps {
         cat.add(l1);
     }
     
-    
-        private static void delete1Livre() throws FileNotFoundException, IOException, Exception { 
+    private static void delete1Livre() throws FileNotFoundException, IOException, Exception { 
         System.out.println("Please give the identifiant of the book to delete");
         int identifiant = keyb.nextInt(); 
         cat.delete(identifiant);
@@ -110,5 +88,14 @@ public class DemoPersistEncaps {
         cat.update(identifiant, new Livre(identifiant, newtitre, newauteur));
         
                 
+    }
+    
+    private static void find1Livre() throws IOException {
+        System.out.println("Please enter the Autor you want to search");
+        String autor = keyb.nextLine();
+        ArrayList<Livre> livresDeVictor = cat.readByAuteur(autor);
+        for (Livre livre : livresDeVictor) {
+            System.out.println(livre.toString());
+        }
     }
 }

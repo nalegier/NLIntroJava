@@ -18,55 +18,59 @@ public class Catalogue {
     }
 
     public void add(Livre l) throws IOException {
+        //first we need to charge the file in an array
         ArrayList<Livre> ls = charge();
-        // crée un clone profond (qui élimine toute référence à "l")
-        //pas nécessaire String sont immuables        String titre = new String(l.getTitre());
-        //pas nécessaire String sont immuables        String auteur = new String(l.getAuteur());
         Livre copy = new Livre(l.getTitre(), l.getAuteur());
         ls.add(copy);
-        /*ls.add(new Livre(
-                new String(l.getTitre()),
-                new String(l.getAuteur())
-        ));*/
+        //then we need to save the new book in the file
         sauve(ls);
     }
 
     public void update(int id, Livre l) throws Exception {
+        //first we need to charge the file in an array
         ArrayList<Livre> ls = charge();
+        //then we search in the array Livre for the book corresponding to the ID provided in input parameter
         for (Livre livre : ls) {
             if (livre.getId() == id ){                  
+                //if we find the book then we update the title and the autor and we save to the file
                 livre.setTitre(l.getTitre());
                 livre.setAuteur(l.getAuteur());
                 sauve(ls);
                 return;
             }
         }
-        throw new Exception("Livre pas trouvé");
+        throw new Exception("The book is not found");
     }
 
     public void delete(int id) throws Exception {
+        //first we need to charge the file in an array
         ArrayList<Livre> ls = charge();
         for (Livre livre : ls) {
+            /*then we search in the array Livre for the book to be deleted based on the ID 
+            provided in input parameter
+            */
             if (livre.getId() == id) {
                 ls.remove(livre);
                 sauve(ls);
                 return;
             }
         }
-        throw new Exception("Livre pas trouvé");
+        throw new Exception("The book is not found");
     }
 
     Livre read(int id) throws Exception {
+        //first we charge the file in an array
         ArrayList<Livre> ls = charge();
         for (Livre livre : ls) {
             if (livre.getId() == id) {
                 return livre;
             }
         }
-        throw new Exception("Livre pas trouvé");
+        throw new Exception("The book is not found");
     }
 
     ArrayList<Livre> read() throws IOException {
+        //first we charge the file in an array
         ArrayList<Livre> ls = charge();
         return ls;
     }
@@ -87,7 +91,7 @@ public class Catalogue {
         File file = new File(nomDeFichier);
         if (!file.exists()) {
             //file.createNewFile();
-            System.out.println("Attention erreur fichier non trouvé");
+            System.out.println("The file " + nomDeFichier + " does not exist");
         }
         Scanner sc = new Scanner(file);
         while (sc.hasNext()) {
@@ -101,7 +105,6 @@ public class Catalogue {
     }
 
     private void sauve(ArrayList<Livre> ls) {
-        //ArrayList<Livre> ls = new ArrayList();
         PrintWriter pw = null;
         try {
             File f = new File(nomDeFichier);
