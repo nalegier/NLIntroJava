@@ -32,6 +32,41 @@ public class DemoPersistEncaps {
         }
     }
 */
+    private static void menu() {
+        boolean next = true;
+        while(next){
+        System.out.println("If you want to add a book, enter A");
+        System.out.println("If you want to delete a book, enter D");
+        System.out.println("If you want to find a book, enter F");
+        System.out.println("If you want to list the catalogue, enter R");
+        System.out.println("To stop, press E");
+        String choix = keyb.nextLine();
+            choix = choix.toUpperCase();
+            if (choix.length() == 0){
+                choix = keyb.nextLine();
+            }
+            switch(choix){
+                case "A":
+                    add1Livre();
+                    break;
+                case "D":
+                    delete1Livre();
+                    break;
+                case "F":
+                    find1Livre();
+                    break;     
+                case "R":
+                    lireLeCatalogue();
+                    break;
+                case "E":
+                    next = false;
+                    break;
+                default:
+                    System.out.println("Incorrect choice");
+                   }
+        }
+    }
+    
     private static void lireLeCatalogue() throws IOException {
         ArrayList<Livre> sendCat = cat.read();
         for (Livre livre : sendCat) {
