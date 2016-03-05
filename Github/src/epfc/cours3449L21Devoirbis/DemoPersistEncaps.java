@@ -20,12 +20,15 @@ public class DemoPersistEncaps {
     private static void menu() throws IOException, Exception {
         boolean next = true;
         while(next){
+        System.out.println("\n       Menu ");
+        System.out.println("--------------------------------------");
         System.out.println("If you want to add a book, enter A");
         System.out.println("If you want to delete a book, enter D");
         System.out.println("If you want to find a book, enter F");
         System.out.println("If you want to update a book, enter U");
         System.out.println("If you want to list the catalogue, enter R");
         System.out.println("To stop, press E");
+        System.out.println("\n --------------------------------------");
         String choix = keyb.nextLine();
             choix = choix.toUpperCase();
             if (choix.length() == 0){
@@ -42,7 +45,7 @@ public class DemoPersistEncaps {
                     find1Livre();
                     break;     
                 case "U":
-                    update1Livre();
+                    updateLivre();
                     break;
                 case "R":
                     lireLeCatalogue();
