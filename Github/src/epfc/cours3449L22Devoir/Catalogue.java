@@ -43,7 +43,7 @@ public class Catalogue {
     public void delete(int id) throws Exception {
   
     }
-    }
+    
 
     ArrayList<Livre> read() {
         try{
@@ -78,6 +78,7 @@ public class Catalogue {
         System.err.println("Got an exception !!!");
         System.err.println(e.getMessage());
 }    
+        return null;
 }
     
     /*
