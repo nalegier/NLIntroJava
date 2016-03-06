@@ -11,13 +11,13 @@ public class DemoPersistEncaps {
     //static final String nomDeFichier = "livre.txt";
     static Scanner keyb = new Scanner(System.in);
 
-    public static void main(String[] args) throws FileNotFoundException, IOException, Exception {
+    public static void main(String[] args) throws Exception {
         cat = new Catalogue();
         menu();
         
     }
 
-    private static void menu() throws IOException, Exception {
+    private static void menu() throws Exception {
         boolean next = true;
         while(next){
         System.out.println("\n       Menu ");
@@ -61,13 +61,15 @@ public class DemoPersistEncaps {
     
     private static void lireLeCatalogue() throws IOException {
         ArrayList<Livre> sendCat = cat.read();
+        System.out.println("List of Books");
         for (Livre livre : sendCat) {
-            System.out.println(livre.toString());
+            System.out.println("Book " + livre.getId() + " Title : " + livre.getTitre() + " Author : " + livre.getAuteur());
+            
         }
     }
    
     
-    private static void add1Livre() throws FileNotFoundException, IOException, ClassNotFoundException {
+    private static void add1Livre()  {
         System.out.println("Enter a title: ");
         String title = keyb.nextLine();
         System.out.println("Enter an autor: ");
@@ -76,13 +78,13 @@ public class DemoPersistEncaps {
         cat.add(l1);
     }
     
-    private static void delete1Livre() throws FileNotFoundException, IOException, Exception { 
+    private static void delete1Livre()  { 
         System.out.println("Please give the identifiant of the book to delete");
         int identifiant = keyb.nextInt(); 
         cat.delete(identifiant);
     }
 
-    private static void updateLivre() throws IOException, Exception {
+    private static void updateLivre()  {
         System.out.println("Please give the identifiant of the book to update: ");
         int identifiant = Integer.parseInt(keyb.nextLine());
         System.out.println("New Title: ");
@@ -94,7 +96,7 @@ public class DemoPersistEncaps {
                 
     }
     
-    private static void find1Livre() throws IOException {
+    private static void find1Livre() {
         System.out.println("Please enter the Autor you want to search");
         String autor = keyb.nextLine();
         ArrayList<Livre> livresDeVictor = cat.readByAuteur(autor);

@@ -97,18 +97,34 @@ public class Catalogue {
         System.err.println("Got an exception !!!");
         System.err.println(e.getMessage());
 }    
-       
+ return null;      
 }
     
    
     ArrayList<Livre> readByAuteur(String auteur) {
-        ArrayList<Livre> lsDeAuteur = new ArrayList<>();
-        Iterable<Livre> ls = null;
-        for (Livre livre : ls) {
-            if (livre.getAuteur().equals(auteur)) {
-                lsDeAuteur.add(livre);
-            }
-        }
-        return lsDeAuteur;
+         //find all the books with the same author
+        try{
+            Class.forName("com.mysql.jdbc.Driver");  //charger le driver pour MySql
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/librarie", "root", "nanou1831");
+            String sql = "select * from catalogue where author = ?";
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery(sql);
+            ArrayList<Livre> lsDeAuteur = new ArrayList<>();
+            while(result.next()){
+                int id = result.getInt(1);
+                String title = result.getString(2);
+                String author = result.getString(3);
+                Livre l = new Livre(id, title, author);
+                lsDeAuteur.add(l);
+                    
+                }
+            connection.close();
+            return lsDeAuteur;
     }
-}
+    catch (Exception e) {
+        System.err.println("Got an exception on Find !");
+        System.err.println(e.getMessage());
+    }
+    return null;     
+    }
+}    
