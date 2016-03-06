@@ -107,7 +107,8 @@ public class Catalogue {
             Class.forName("com.mysql.jdbc.Driver");  //charger le driver pour MySql
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/librarie", "root", "nanou1831");
             String sql = "select * from catalogue where author = ?";
-            Statement statement = connection.createStatement();
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1,auteur);
             ResultSet result = statement.executeQuery(sql);
             ArrayList<Livre> lsDeAuteur = new ArrayList<>();
             while(result.next()){
@@ -116,8 +117,7 @@ public class Catalogue {
                 String author = result.getString(3);
                 Livre l = new Livre(id, title, author);
                 lsDeAuteur.add(l);
-                    
-                }
+                }    
             connection.close();
             return lsDeAuteur;
     }

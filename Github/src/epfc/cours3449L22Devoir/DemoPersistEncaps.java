@@ -103,5 +103,8 @@ public class DemoPersistEncaps {
         for (Livre livre : livresDeVictor) {
             System.out.println(livre.toString());
         }
+        if (cat.readByAuteur(autor) == null){
+            System.out.println("No Book found for this author");
+        }
     }
 }
