@@ -61,9 +61,9 @@ public class DemoPersistEncaps {
     
     private static void lireLeCatalogue() throws IOException {
         ArrayList<Livre> sendCat = cat.read();
-        System.out.println("List of Books in the catalogue");
+        System.out.println("List of Books in the catalogue \n");
         for (Livre livre : sendCat) {
-            System.out.printf("Book: %-4d  Title: %-20s  Author: %-20s \n", livre.getId(), livre.getTitre(), livre.getAuteur());
+            System.out.printf("Book: %-4d  Title: %-50s  Author: %-30s \n", livre.getId(), livre.getTitre(), livre.getAuteur());
             
         }
     }
@@ -105,7 +105,7 @@ public class DemoPersistEncaps {
         }
         System.out.println("List of Book from " + autor);
         for (Livre livre : livresDeVictor) {
-           System.out.printf("Book: %-4d  Title: %-20s  Author: %-20s \n", livre.getId(), livre.getTitre(), livre.getAuteur());
+           System.out.printf("Book: %-4d  Title: %-40s  Author: %-30s \n", livre.getId(), livre.getTitre(), livre.getAuteur());
         }
     }
 }
