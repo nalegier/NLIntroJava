@@ -60,11 +60,11 @@ public class DemoPersistEncaps {
     }
     
     private static void lireLeCatalogue() throws IOException {
-        cat.read();
-        //ArrayList<Livre> sendCat = cat.read();
-        //for (Livre livre : sendCat) {
-        //    System.out.println(livre.toString());
+        ArrayList<Livre> sendCat = cat.read();
+        for (Livre livre : sendCat) {
+            System.out.println(livre.toString());
         }
+    }
    
     
     private static void add1Livre() throws FileNotFoundException, IOException, ClassNotFoundException {

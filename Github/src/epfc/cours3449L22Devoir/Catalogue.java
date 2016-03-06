@@ -13,16 +13,16 @@ public class Catalogue {
  }
     
     public void add(Livre l) {
-        // insert with value for title and author
+        // insert a new record in table "catalogue" with value for title and author
         try{
             Class.forName("com.mysql.jdbc.Driver");  //charger le driver pour MySql
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/librarie", "root", "nanou1831");
-            String addsql = "insert into catalogue (titre,auteur) values (?,?)";
-            PreparedStatement statement = connection.prepareStatement(addsql);
-            String autor = l.getAuteur();
+            String sql = "insert into catalogue (titre,auteur) values (?,?)";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            String author = l.getAuteur();
             String title = l.getTitre();
             statement.setString(1, title);
-            statement.setString(2, autor);
+            statement.setString(2, author);
             statement.executeUpdate();
             connection.close();
     }
@@ -33,11 +33,12 @@ public class Catalogue {
    }
 
     public void update(int id, Livre l) {
+        //update a record in table catalogue.  To find the book to update the id is given as input parameter
         try{
             Class.forName("com.mysql.jdbc.Driver");  //charger le driver pour MySql
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/librarie", "root", "nanou1831");
-            String updatesql = "update catalogue set titre = ?, autor = ? where id = ?";
-            PreparedStatement statement = connection.prepareStatement(updatesql);
+            String sql = "update catalogue set titre = ?, auteur = ? where id = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
             String titre = l.getTitre();
             String auteur = l.getAuteur();
             statement.setString(1, titre);
@@ -53,17 +54,29 @@ public class Catalogue {
     }    
 
 
-    public void delete(int id) throws Exception {
-  
+    public void delete(int id){
+        //delete a record in table catalogue by using the id as input parameter
+        try{
+            Class.forName("com.mysql.jdbc.Driver");  //charger le driver pour MySql
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/librarie", "root", "nanou1831");
+            String sql = "delete from catalogue where id = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, id);
+            statement.executeUpdate();
+            connection.close();
     }
+    catch (Exception e) {
+        System.err.println("Got an exception on delete !");
+        System.err.println(e.getMessage());
+    }
+    }    
     
-
     ArrayList<Livre> read() {
         try{
             Class.forName("com.mysql.jdbc.Driver");  //charger le driver pour MySql
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/librarie", "root", "nanou1831");
             Statement statement = connection.createStatement();
-             
+            
             // to execute a select
             ResultSet resultSet = statement.executeQuery
             ("select * from catalogue");
@@ -71,26 +84,20 @@ public class Catalogue {
             ArrayList<Livre> listelivres = new ArrayList<>();
             // to show the result of the select command
             while (resultSet.next()) {
-                System.out.println
-                (resultSet.getString(1) + " - " +
-                resultSet.getString(2) + " - " + 
-                resultSet.getString(3));
                 Livre l = new Livre(
                      resultSet.getInt(1), 
                      resultSet.getString(2), 
                      resultSet.getString(3));
                 listelivres.add(l);
         }
-        //for (Livre livre: listelivres){
-        //    System.out.println(livre.toString());
-        //}
-        connection.close();
+         connection.close();
+         return listelivres;
     }
     catch (Exception e) {
         System.err.println("Got an exception !!!");
         System.err.println(e.getMessage());
 }    
-        return null;
+       
 }
     
    
