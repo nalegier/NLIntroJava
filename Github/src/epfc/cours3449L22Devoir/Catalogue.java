@@ -106,15 +106,15 @@ public class Catalogue {
         try{
             Class.forName("com.mysql.jdbc.Driver");  //charger le driver pour MySql
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/librarie", "root", "nanou1831");
-            String sql = "select * from catalogue where author = ?";
+            String sql = "select * from catalogue where UPPER(auteur) like " + "'%" + auteur + "%'";
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1,auteur);
             ResultSet result = statement.executeQuery(sql);
             ArrayList<Livre> lsDeAuteur = new ArrayList<>();
             while(result.next()){
                 int id = result.getInt(1);
                 String title = result.getString(2);
                 String author = result.getString(3);
+                //System.out.println(result.getInt(1) + " " + result.getString(2) + " " + result.getString(3));
                 Livre l = new Livre(id, title, author);
                 lsDeAuteur.add(l);
                 }    

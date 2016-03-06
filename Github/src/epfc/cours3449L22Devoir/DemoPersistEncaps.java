@@ -61,9 +61,9 @@ public class DemoPersistEncaps {
     
     private static void lireLeCatalogue() throws IOException {
         ArrayList<Livre> sendCat = cat.read();
-        System.out.println("List of Books");
+        System.out.println("List of Books in the catalogue");
         for (Livre livre : sendCat) {
-            System.out.println("Book " + livre.getId() + " Title : " + livre.getTitre() + " Author : " + livre.getAuteur());
+            System.out.printf("Book: %-4d  Title: %-20s  Author: %-20s \n", livre.getId(), livre.getTitre(), livre.getAuteur());
             
         }
     }
@@ -98,13 +98,14 @@ public class DemoPersistEncaps {
     
     private static void find1Livre() {
         System.out.println("Please enter the Autor you want to search");
-        String autor = keyb.nextLine();
+        String autor = keyb.nextLine().toUpperCase();
         ArrayList<Livre> livresDeVictor = cat.readByAuteur(autor);
-        for (Livre livre : livresDeVictor) {
-            System.out.println(livre.toString());
-        }
         if (cat.readByAuteur(autor) == null){
             System.out.println("No Book found for this author");
+        }
+        System.out.println("List of Book from " + autor);
+        for (Livre livre : livresDeVictor) {
+           System.out.printf("Book: %-4d  Title: %-20s  Author: %-20s \n", livre.getId(), livre.getTitre(), livre.getAuteur());
         }
     }
 }
